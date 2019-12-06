@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/background_light"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GameActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:text="Attempts: " />
+
+        <TextView
+            android:id="@+id/attempts"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/attempts"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/info"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/info"
+            android:onClick="information" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:minWidth="200dp"
+        android:maxLength="7"
+        android:layout_height="wrap_content"
+        android:id="@+id/guess"
+        android:inputType="text"
+        android:hint="Make a guess!"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:minWidth="200dp"
+        android:id="@+id/submitButton"
+        android:layout_height="wrap_content"
+        android:text="@string/guessButton"
+        android:onClick="submit"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_purple"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/jottoTable"
+        android:shrinkColumns="*"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp">
+        <TableRow>
+            <Button
+                android:text= "@string/A"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp"/>
+            <Button
+                android:text= "@string/B"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp"/>
+            <Button
+                android:text= "@string/C"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/D"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/E"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/F"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/G"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:text= "@string/H"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/I"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/J"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/K"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/L"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/M"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/N"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:text= "@string/O"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/P"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/Q"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/R"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/S"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/T"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/U"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:text= "@string/V"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/W"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/X"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/Y"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+            <Button
+                android:text= "@string/Z"
+                android:onClick="letterClicked"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_green_light"
+                android:layout_margin="2dp" />
+        </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="*"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:id="@+id/mastermindTable"
+        android:paddingRight="5dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TableRow android:gravity="center">
+
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/zero"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/one"
+                android:textColor="@android:color/white" />
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/two"
+                android:textColor="@android:color/white" />
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/three"
+                android:textColor="@android:color/white" />
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/four"
+                android:textColor="@android:color/white" />
+        </TableRow>
+
+        <TableRow android:gravity="center">
+
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/five"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/six"
+                android:textColor="@android:color/white" />
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/seven"
+                android:textColor="@android:color/white" />
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/eight"
+                android:textColor="@android:color/white" />
+            <Button
+                android:layout_margin="2dp"
+                android:background="@android:color/holo_green_light"
+                android:onClick="letterClicked"
+                android:text="@string/nine"
+                android:textColor="@android:color/white" />
+        </TableRow>
+    </TableLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:padding="20dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/pastAttempts"
+            android:layout_gravity="fill"/>
+    </ScrollView>
+</LinearLayout>

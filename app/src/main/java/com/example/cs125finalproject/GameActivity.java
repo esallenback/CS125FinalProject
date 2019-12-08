@@ -124,6 +124,11 @@ public class GameActivity extends AppCompatActivity {
                 = (LayoutInflater)getBaseContext()
                 .getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.popup, null);
+        if (game.equals("jotto")) {
+            popupView = layoutInflater.inflate(R.layout.popup, null);
+        } else {
+            popupView = layoutInflater.inflate(R.layout.popup_2, null);
+        }
         final PopupWindow popupWindow = new PopupWindow(
                 popupView,
                 ViewGroup.LayoutParams.MATCH_PARENT,

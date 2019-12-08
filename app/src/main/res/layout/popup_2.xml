@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:gravity="center"
-                    android:text="Objective: Try to guess the secret word."
+                    android:text="Objective: Try to guess the secret number."
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                     android:layout_height="54dp"
                     android:layout_margin="20dp"
                     android:gravity="center"
-                    android:text="Start out by choosing the length of the word that you want to guess."
+                    android:text="Start out by choosing the length of the number that you want to guess."
                     android:textSize="15dp" />
 
                 <ImageView
@@ -82,7 +82,7 @@
                     android:layout_height="291dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:background="@drawable/first_picture" />
+                    android:background="@drawable/mastermind_one" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -94,22 +94,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:gravity="center"
-                    android:text="Next you can start guessing words. You have to make sure they are real
-and that they don't contain the same letter twice. "
+                    android:text="Next you can start guessing numbers.  "
                     android:textSize="15dp" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="290dp"
-                    android:layout_height="291dp"
+                    android:layout_height="336dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:background="@drawable/second_picture"
+                    android:background="@drawable/mastermind_two"
                     android:visibility="visible" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -117,8 +112,9 @@ and that they don't contain the same letter twice. "
                     android:layout_height="90dp"
                     android:layout_margin="20dp"
                     android:gravity="center"
-                    android:text="If the word you choose has the same letters as the secret word, a number
-will be returned that shows you how many of those letters are in the secret word. "
+                    android:text="When you guess a number, two things will be displayed. The white number
+tells you how many of those numbers are in the secret number. The red number tells you
+how many of those numbers are in the right position."
                     android:textSize="15dp" />
 
                 <ImageView
@@ -127,7 +123,7 @@ will be returned that shows you how many of those letters are in the secret word
                     android:layout_height="291dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:background="@drawable/third_picture" />
+                    android:background="@drawable/mastermind_three" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -139,7 +135,7 @@ will be returned that shows you how many of those letters are in the secret word
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:gravity="center"
-                    android:text="The letters on the gameboard are useful to keep track of what letters are
+                    android:text="The numbers on the gameboard are useful to keep track of what numbers are
 in the secret word. "
                     android:textSize="15dp" />
 
@@ -149,8 +145,7 @@ in the secret word. "
                     android:layout_height="291dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="20dp"
-                    android:background="@drawable/fourth_picture" />
-
+                    android:background="@drawable/mastermind_four" />
             </LinearLayout>
         </ScrollView>
 

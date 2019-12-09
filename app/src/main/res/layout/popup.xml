@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/background_light">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +18,7 @@
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="12dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -29,8 +32,110 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="Information about the app" />
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="How to Play"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:text="Objective: Try to guess the secret word."
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:text="Make sure the words that you use are real and that they don't contain the same letter twice."
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="290dp"
+                    android:layout_height="291dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/second_picture"
+                    android:visibility="visible" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:text="If the word you choose has the same letters as the secret word, a number
+will be returned that shows you how many of those letters are in the secret word. "
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="290dp"
+                    android:layout_height="291dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/third_picture" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:text="The letters on the gameboard are useful to keep track of what letters are
+in the secret word. "
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="290dp"
+                    android:layout_height="291dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/fourth_picture" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
 </LinearLayout>

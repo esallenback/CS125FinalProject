@@ -1,11 +1,31 @@
 package com.example.cs125finalproject;
 
-import org.json.JSONObject;
+import android.app.DownloadManager;
+import android.util.Log;
+import android.view.View;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.RequestFuture;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import javax.net.ssl.HttpsURLConnection;
+import javax.xml.transform.ErrorListener;
 
 //Does not check for repeat guesses
 //Assumes Mastermind text input makes it all numbers
@@ -28,48 +48,7 @@ public class Checker {
         return true;
     }
 
-    /**
-     * Check with a web dictionary API to see if text is a word in the English Dictionary.
-     * Good dictionary APIs: Merriam-Webster's API, WordsAPI, or Oxford Dictionaries API
-     * False for: blah, ughhhh, ikr, etc.
-     * @param text user input
-     * @return boolean
-     */
-    public boolean isAWord(String text) {
-        /**
-        text = text.toLowerCase();
-        try {
-            URL urlForGetRequest = new URL("https://od-api.oxforddictionaries.com/api/v2/entries/en-us/" + text);
-            String readLine = null;
-            HttpsURLConnection conection = (HttpsURLConnection) urlForGetRequest.openConnection();
-            conection.setRequestMethod("GET");
-            conection.setRequestProperty("app_id", "86bf9d4f"); // set userId its a sample here
-            conection.setRequestProperty("app_key", "4180cc1d963052232afda90b81a63c1b");
-            conection.setRequestProperty("Accept","application/json");
 
-            int responseCode = conection.getResponseCode();
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(urlForGetRequest.getInputStream()));
-                StringBuilder stringBuilder = new StringBuilder();
-                String line = null;
-                while ((line = reader.readLine()) != null) {
-                    stringBuilder.append(line + "\n");
-                }
-                String jsonText = stringBuilder.toString();
-                JSONObject json = new JSONObject(jsonText);
-                if (json.has("error")) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        } catch (Exception e) {
-            //Create toast
-            return false;
-        }
-         **/
-        return true;
-    }
 
     /**
      * Checks that size of string is equal to length (Jotto).

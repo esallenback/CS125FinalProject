@@ -1,7 +1,5 @@
 package com.example.cs125finalproject;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,21 +24,8 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONObject;
-
 public class GameActivity extends AppCompatActivity {
     private String game = "jotto";
-    private String text;
-    private Boolean bool = false;
     private int length;
     private String theCode;
     @Override
@@ -59,13 +44,11 @@ public class GameActivity extends AppCompatActivity {
             TableLayout mastermindTable = findViewById(R.id.mastermindTable);
             mastermindTable.setVisibility(View.VISIBLE);
             jottoTable.setVisibility(View.GONE);
-
-            game = "mastermind";
             theCode = generateRandomNumber();
             System.out.println(theCode);
+            game = "mastermind";
         } else {
             theCode = generateRandomWord();
-            System.out.println(theCode);
         }
         InputFilter[] filters = new InputFilter[1];
         filters[0] = new InputFilter.LengthFilter(length); //Filter to 10 characters
@@ -78,64 +61,10 @@ public class GameActivity extends AppCompatActivity {
      */
     public void submit(View view) {
         EditText guess = findViewById(R.id.guess);
-        text = guess.getText().toString();
+        String text = guess.getText().toString();
         guess.setText("");
         guess.setHint("Make a guess!");
-        if (game == "jotto") {
-            isAWord();
-        } else {
-            handle(true);
-        }
-    }
-    /**
-     * Check with a web dictionary API to see if text is a word in the English Dictionary.
-     * Good dictionary APIs: Merriam-Webster's API, WordsAPI, or Oxford Dictionaries API
-     * False for: blah, ughhhh, ikr, etc.
-     * @return boolean
-     */
-    private void isAWord() {
-        RequestQueue queue = Volley.newRequestQueue(this);
-        try {
-            text = text.toLowerCase();
-            String url = "https://od-api.oxforddictionaries.com/api/v2/entries/en-us/" + text;
 
-            JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET,
-                    url, null, new Response.Listener<JSONObject>()
-            {
-                @Override
-                public void onResponse(JSONObject response) {
-                    System.out.println("YES");
-                    handle(true);
-                }
-            },
-                    new Response.ErrorListener()
-                    {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            System.out.println("ERROR");
-                            handle(false);
-                        }
-                    }
-            ) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String>  params = new HashMap<String, String>();
-                    params.put("app_id", "86bf9d4f");
-                    params.put("app_key", "4180cc1d963052232afda90b81a63c1b");
-                    params.put("Accept", "application/json");
-
-                    return params;
-                }
-            };
-            queue.add(getRequest);
-        } catch (Exception e) {
-            System.out.println("EXCEPTION");
-            //toast  internet?
-            handle(false);
-        }
-    }
-    public void handle(boolean bool) {
-        System.out.println(bool);
         Checker check = new Checker();
         if (!check.correctLength(text, length)) {
             String toShow = "Guess must be length of " + length + " characters long.";
@@ -147,7 +76,7 @@ public class GameActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(),toShow,Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-        } else if (game.equals("jotto") && !bool) {
+        } else if (game.equals("jotto") && !check.isAWord(text)) {
             String toShow = "Guess must be a word in the English dictionary.";
             Toast toast = Toast.makeText(getApplicationContext(),toShow,Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
@@ -179,12 +108,7 @@ public class GameActivity extends AppCompatActivity {
 
             }
             if (game.equals("jotto") && check.theGuessIsRight(text, theCode)) {
-                //WINNER MASTERMIND
-                Intent intent = new Intent(this, WinActivity.class);
-                intent.putExtra("answer", theCode);
-                intent.putExtra("attempts", currentCount + 1);
-                startActivity(intent);
-                finish();
+                //WINNER JOTTO
 
             }
             TextView correctNumber = messageChunk.findViewById(R.id.correct);
@@ -199,12 +123,7 @@ public class GameActivity extends AppCompatActivity {
         LayoutInflater layoutInflater
                 = (LayoutInflater)getBaseContext()
                 .getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView;
-        if (game.equals("jotto")) {
-            popupView = layoutInflater.inflate(R.layout.popup, null);
-        } else {
-            popupView = layoutInflater.inflate(R.layout.popup_2, null);
-        }
+        View popupView = layoutInflater.inflate(R.layout.popup, null);
         final PopupWindow popupWindow = new PopupWindow(
                 popupView,
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -236,6 +155,9 @@ public class GameActivity extends AppCompatActivity {
             view.setBackgroundColor(Color.parseColor("#ff99cc00"));
         }
     }
+    public String generateRandomWord() {
+        return "house";
+    }
     public String generateRandomNumber() {
         Random random = new Random();
         String toReturn = "";
@@ -245,49 +167,5 @@ public class GameActivity extends AppCompatActivity {
             toReturn = toReturn + digit;
         }
         return toReturn;
-    }
-
-    public String generateRandomWord() {
-        String[] arr = new String[11];
-        if (length == 3) {
-            arr[0] = "cat";
-            arr[1] = "dog";
-            arr[2] = "sad";
-            arr[3] = "toy";
-            arr[4] = "cap";
-            arr[5] = "run";
-            arr[6] = "far";
-            arr[7] = "sat";
-            arr[8] = "wet";
-            arr[9] = "lot";
-            arr[10] = "can";
-        } else if (length == 4) {
-            arr[0] = "four";
-            arr[1] = "star";
-            arr[2] = "last";
-            arr[3] = "cozy";
-            arr[4] = "sock";
-            arr[5] = "hive";
-            arr[6] = "glad";
-            arr[7] = "know";
-            arr[8] = "walk";
-            arr[9] = "womb";
-            arr[10] = "yolk";
-        } else {
-            arr[0] = "candy";
-            arr[1] = "zilch";
-            arr[2] = "glyph";
-            arr[3] = "jokes";
-            arr[4] = "stalk";
-            arr[5] = "froze";
-            arr[6] = "hazel";
-            arr[7] = "graph";
-            arr[8] = "picky";
-            arr[9] = "glaze";
-            arr[10] = "black";
-        }
-        Random random = new Random();
-        int num = random.nextInt(10);
-        return arr[num];
     }
 }

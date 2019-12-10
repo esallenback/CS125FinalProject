@@ -1,32 +1,5 @@
 package com.example.cs125finalproject;
 
-import android.app.DownloadManager;
-import android.util.Log;
-import android.view.View;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.RequestFuture;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.xml.transform.ErrorListener;
-
 //Does not check for repeat guesses
 //Assumes Mastermind text input makes it all numbers
 public class Checker {
@@ -45,10 +18,15 @@ public class Checker {
      * @return boolean
      */
     public boolean allLetters(String text) {
+        char[] chars = text.toCharArray();
+
+        for (char c : chars) {
+            if(!Character.isLetter(c)) {
+                return false;
+            }
+        }
         return true;
     }
-
-
 
     /**
      * Checks that size of string is equal to length (Jotto).
@@ -83,24 +61,6 @@ public class Checker {
             }
         }
         return true;
-    }
-
-    /**
-     * Checks if string entered is the actual word picked.
-     * Note: Not case sensitive!
-     * True: (bat, bat), (house, HOUSE)
-     * @param text user's guess
-     * @param answer the actual word
-     * @return boolean
-     */
-    public boolean theGuessIsRight(String text, String answer) {
-        text = text.toLowerCase();
-        answer = answer.toLowerCase();
-        if (text.equals(answer)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
